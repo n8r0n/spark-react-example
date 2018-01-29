@@ -10,7 +10,7 @@ const data04 = [{x: 2010, y: 100}, {x: 2011, y: 130}, {x: 2012, y: 139}, {x: 201
 const data05 = [{x: 2010, y: 100}, {x: 2011, y: 119}, {x: 2012, y: 117}, {x: 2013, y: 119}, {x: 2014, y: 110}, {x: 2015, y: 133}, {x:2016, y: 135}];
 const data06 = [{x: 2010, y: 100}, {x: 2011, y: 102}, {x: 2012, y: 99}, {x: 2013, y: 108}, {x: 2014, y: 128}, {x: 2015, y: 125}, {x:2016, y: 130}];
 
-class FormContainer extends Component {
+class GraphContainer extends Component {
   constructor() {
     super();
   }
@@ -36,6 +36,6 @@ class FormContainer extends Component {
 }
 
 const wrapper = document.getElementById("graph");
-wrapper ? ReactDOM.render(<FormContainer />, wrapper) : false;
+wrapper ? ReactDOM.render(<GraphContainer />, wrapper) : false;
 
-export default FormContainer;
+export default GraphContainer;
