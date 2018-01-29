@@ -1,8 +1,14 @@
 # spark-react-example
-This is an example of one possible way of structuring a Spark application
+This is an example of one possible way of structuring a Spark application, with React JS on the client side.
 
 The application has filters, controllers, views, authentication, localization, error handling, and more. 
 It contains the source code for the tutorial found at https://sparktutorials.github.io/2016/06/10/spark-react-example.html
+
+Other documentation/tutorials used:
+
+* https://www.valentinog.com/blog/react-webpack-babel/
+* https://webpack.academy/p/the-core-concepts
+* [Recharts API docs](http://recharts.org/#/en-US/api/ScatterChart)
 
 ## Build Environment Setup
 Before building the project, make sure your development machine has the following installed:
@@ -21,18 +27,18 @@ Before building the project, make sure your development machine has the followin
 After installing the required tools and cloning this project, you will need to manually build the React JS web resources every time you change the client JavaScript.
 
     cd spark-react-example
-    cd weboack
+    cd webpack
     setup.ps1
     
-The setup powershell script will use `npm` to initialize a package and then fetch other packages that this project will depend on.
+The `setup.ps1` powershell script will use `npm` to initialize a new package and then fetch other packages that this project will depend on.
 
 # Build
 
-After making changes to the `webpack/src/` contents (such as .js files), build the webpack package at the command line with:
+After making changes to any of the `webpack/src/` contents (such as .js files), rebuild the webpack package at the command line with:
 
     npm run build
     
-And then copy the results into the static resource folder of your webapp project:
+And then copy the results into the static resource folder (`\public`) of your webapp project:
 
     cp .\dist\js\main.js ..\src\main\resources\public\js\
     
