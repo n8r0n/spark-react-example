@@ -37,4 +37,4 @@ And then copy the results into the static resource folder of your webapp project
 Then, build normally in Eclipse and run.  Eclipse will take the large generated main.js file and put it in the directory the webapp uses for static resources. It will then be available to the project.
 
 ## Screenshot
-[![Application Screenshot](https://imgur.com/BLGL34E)](https://imgur.com/BLGL34E)
+[![Application Screenshot](https://i.imgur.com/hFEpQMS.png)](https://i.imgur.com/hFEpQMS.png)
