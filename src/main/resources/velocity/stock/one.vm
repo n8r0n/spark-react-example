@@ -1,0 +1,14 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+    #if($stock)
+    <h1>$stock.getName()</h1>
+    <h2>$stock.getSymbol()</h2>
+    <div class="stock">
+        <div class="stockCover">
+            <!-- <img src="$book.getLargeCover()" alt="$book.getTitle()"> -->
+        </div>
+    </div>
+    #else
+    <h1>$msg.get("STOCKS_STOCK_NOT_FOUND")</h1>
+    #end
+#end

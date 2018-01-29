@@ -1,0 +1,52 @@
+#macro(mainLayout)
+<html>
+<head>
+    <title>$msg.get("COMMON_TITLE")</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="$WebPath.getINDEX()"><img id="logo" src="/img/logo.png" alt="Spark Portfolio"></a>
+        <ul id="chooseLanguage">
+            <form>
+                <li>
+                    <button name="locale" value="de" style="background-image: url(/img/german.png);"></button>
+                </li>
+                <li>
+                    <button name="locale" value="en" style="background-image: url(/img/english.png);"></button>
+                </li>
+            </form>
+        </ul>
+        <ul id="menu">
+            <li><a href="$WebPath.getSTOCKS()">$msg.get("COMMON_NAV_ALLSTOCKS")</a></li>
+            #if($currentUser)
+                <li>
+                    <form method="post" action="$WebPath.getLOGOUT()">
+                        <button id="logout">$msg.get("COMMON_NAV_LOGOUT")</button>
+                    </form>
+                </li>
+            #else
+                <li><a href="$WebPath.getLOGIN()"">$msg.get("COMMON_NAV_LOGIN")</a></li>
+            #end
+        </ul>
+    </nav>
+</header>
+<main>
+    <div id="content">
+        $bodyContent
+    </div>
+</main>
+<footer>
+    $msg.get("COMMON_FOOTER_TEXT")
+</footer>
+
+<!-- this allows React javascript build for the project to be included on all pages -->
+<script type="text/javascript" src="/js/main.js?ver=8"></script>
+
+</body>
+</html>
+#end

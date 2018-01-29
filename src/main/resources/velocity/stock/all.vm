@@ -1,0 +1,24 @@
+#parse("/velocity/layout.vm")
+#@mainLayout()
+<h1>$msg.get("STOCKS_HEADING_ALL")</h1>
+<div class="row row-3">
+    #foreach($stock in $stocks)
+        <div class="col">
+            <a class="stock" href="$WebPath.getSTOCKS()$stock.getSymbol()">
+                <div class="stockCover">
+                    <b>$stock.getName()</b>
+                </div>
+                <!-- $msg.get("STOCKS_CAPTION", $stock.getName(), $stock.getSymbol()) -->
+            </a>
+        </div>        
+    #end
+    
+    <div class="container">
+        <p>Stock Performance</p>
+        <div id="graph">
+            <!-- rechart graph -->
+        </div>
+    </div>
+    
+</div>
+#end
