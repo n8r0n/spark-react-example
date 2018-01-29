@@ -26,6 +26,8 @@ After installing the required tools and cloning this project, you will need to m
     
 The setup powershell script will use `npm` to initialize a package and then fetch other packages that this project will depend on.
 
+# Build
+
 After making changes to the `webpack/src/` contents (such as .js files), build the webpack package at the command line with:
 
     npm run build
