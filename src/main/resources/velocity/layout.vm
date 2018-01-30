@@ -45,7 +45,7 @@
 </footer>
 
 <!-- this allows React javascript build for the project to be included on all pages -->
-<script type="text/javascript" src="/js/main.js?ver=8"></script>
+<script type="text/javascript" src="/js/main.js?ver=9"></script>
 
 </body>
 </html>
