@@ -22,6 +22,20 @@ public class StockController {
         }
         return ViewUtil.notAcceptable.handle(request, response);
     };
+    
+    public static Route fetchRawStockData = (Request request, Response response) -> {
+        LoginController.ensureUserIsLoggedIn(request, response);
+		// TODO: if (clientAcceptsJson(request)) {
+			HashMap<String, List<Float>> data = new HashMap<String, List<Float>>();
+			Iterable<Stock> stocks = stockDao.getAllStocks();
+			for (Stock stock : stocks) {
+				String symbol = stock.getSymbol();
+				data.put(symbol, stockDao.getPriceHistoryForStock(symbol, null, null)); // TODO: use dates from request
+			}
+			return dataToJson(data);
+		//}
+		//return ViewUtil.notAcceptable.handle(request, response);
+    };
 
 //    public static Route fetchOneStock = (Request request, Response response) -> {
 //        LoginController.ensureUserIsLoggedIn(request, response);

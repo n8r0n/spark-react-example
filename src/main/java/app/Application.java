@@ -32,7 +32,8 @@ public class Application {
 
         // Set up routes
         get(Path.Web.INDEX,          IndexController.serveIndexPage);
-        get(Path.Web.STOCKS,          StockController.fetchAllStocks);
+        get(Path.Web.STOCKS,         StockController.fetchAllStocks);
+        get(Path.Web.STOCKDATA,      StockController.fetchRawStockData);
         //get(Path.Web.ONE_STOCK,       StockController.fetchOneStock);
         get(Path.Web.LOGIN,          LoginController.serveLoginPage);
         post(Path.Web.LOGIN,         LoginController.handleLoginPost);

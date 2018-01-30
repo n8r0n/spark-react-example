@@ -11,6 +11,7 @@ public class Path {
         @Getter public static final String LOGIN = "/login/";
         @Getter public static final String LOGOUT = "/logout/";
         @Getter public static final String STOCKS = "/stocks/";
+        @Getter public static final String STOCKDATA = "/stockdata/";
         //@Getter public static final String ONE_STOCK = "/stocks/:symbol/";
     }
 
