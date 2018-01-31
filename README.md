@@ -16,7 +16,7 @@ Before building the project, make sure your development machine has the followin
 * Eclipse
 * [lombok.jar](https://projectlombok.org/download)
 * [npm package manager](https://www.npmjs.com/package/npm)
-* [node.js 64 bit windows installer](https://nodejs.org/en/download/)
+* [node.js 64 bit windows installer](https://nodejs.org/en/download/) (includes npm)
 
 ### Suggested
 
@@ -24,13 +24,13 @@ Before building the project, make sure your development machine has the followin
 * Eclipse plugins **Eclipse Web Development Tools, Eclipse Java Web Developer Tools, JavaScript Development Tools, JavaScript Development Tools Chromium**
   * Eclipse -> **Help -> Install New Software ... -> Work with:** http://download.eclipse.org/releases/[oxygen]
 
-After installing the required tools and cloning this project, you will need to manually build the React JS web resources every time you change the client JavaScript.
+After installing the required tools and cloning this project, you will need to manually build the React JS web resources every time you change the client JavaScript. First, run this setup once:
 
     cd spark-react-example
     cd webpack
     setup.ps1
     
-The `setup.ps1` powershell script will use `npm` to initialize a new package and then fetch other packages that this project will depend on.
+The `setup.ps1` powershell script will use `npm` to initialize a new package and then fetch other packages that this project will depend on. (use setup.sh script on Mac/Linux instead of setup.ps1)
 
 # Build
 
@@ -42,7 +42,7 @@ And then copy the results into the static resource folder (`\public`) of your we
 
     cp .\dist\js\main.js ..\src\main\resources\public\js\
     
-Then, build normally in Eclipse and run.  Eclipse will take the large generated main.js file and put it in the directory the webapp uses for static resources. It will then be available to the project.
+(You may need to create the `public\js` folder the first time.) Then, build normally in Eclipse and run.  Eclipse will take the large generated main.js file and put it in the directory the webapp uses for static resources. It will then be available to the project.
 
 ## Screenshot
 [![Application Screenshot](https://i.imgur.com/hFEpQMS.png)](https://i.imgur.com/hFEpQMS.png)
