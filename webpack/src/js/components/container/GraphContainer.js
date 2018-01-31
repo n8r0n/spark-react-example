@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-// import Input from "../presentational/Input";
+//import Input from "../presentational/Input";
 import {ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
 const data01 = [{x: 2010, y: 100}, {x: 2011, y: 120}, {x: 2012, y: 117}, {x: 2013, y: 134}, {x: 2014, y: 144}, {x: 2015, y: 144}, {x:2016, y: 177}];
@@ -11,28 +11,38 @@ const data05 = [{x: 2010, y: 100}, {x: 2011, y: 119}, {x: 2012, y: 117}, {x: 201
 const data06 = [{x: 2010, y: 100}, {x: 2011, y: 102}, {x: 2012, y: 99}, {x: 2013, y: 108}, {x: 2014, y: 128}, {x: 2015, y: 125}, {x:2016, y: 130}];
 
 class GraphContainer extends Component {
-  constructor() {
-    super();
-  }
+   constructor(props) {
+      super(props);
+      this.state = {
+            data: false
+      };
+      this.receiveData = this.receiveData.bind(this);
+   }
 
-  render() {
-    return (
-    	<ScatterChart width={600} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
-          	<XAxis type="number" dataKey={'x'} name='date' unit='' tickCount={7} domain={['dataMin', 'dataMax']} />
-          	<YAxis type="number" dataKey={'y'} name='price' unit='USD'/>
-            <ZAxis range={[100]}/>
-            <CartesianGrid />
-          	<Tooltip cursor={{strokeDasharray: '3 3'}}/>
-            <Legend/>
-          	<Scatter name='TSLA' data={data01} fill='#8884d8' line shape="square"/>
-            <Scatter name='MSFT' data={data02} fill='#82ca9d' line shape="diamond"/>
-            <Scatter name='AMZN' data={data03} fill='#ff0000' line shape="circle"/>
-            <Scatter name='GOOG' data={data04} fill='#00ff00' line shape="star"/>
-            <Scatter name='UBER' data={data05} fill='#0000ff' line shape="triangle"/>
-            <Scatter name='AAPL' data={data06} fill='#000000' line shape="cross"/>
-        </ScatterChart>    
-    );
-  }
+   componentDidMount() {
+      var _self = this;
+      fetch('http://localhost:4567/stockdata/?user=perwendel', { headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' } })
+      .then(function(response) {
+         // convert to JSON
+         return response.json();
+      })
+      .then(function(json) {
+         // process JSON stock data
+         console.log(json);
+         _self.receiveData(json);
+      })
+      .catch(function(error) {
+         console.log(error);
+      });
+   }
+
+   receiveData(data) {
+      this.setState({data});	 
+   }
+
+   render() {
+      return <div>Got it!</div>
+   }
 }
 
 const wrapper = document.getElementById("graph");
