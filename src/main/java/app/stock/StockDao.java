@@ -27,14 +27,20 @@ public class StockDao {
 		return stocks;
 	}
 
-	public List<Float> getPriceHistoryForStock(String symbol, Date from, Date to) {
-		// TODO use date range and lookup in real SQL database
-		List<Float> result = priceHistory.get(symbol);
-		if (result != null) {
-			return result;
-		} else {
-			return new ArrayList<Float>(Arrays.asList(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f));
-		}
+	public List<PriceData> getPriceHistoryForStock(String symbol, Date from, Date to) {
+	   // TODO use date range and lookup in real SQL database
+	   float date = 2010.0f;
+      List<Float> history = priceHistory.get(symbol);
+	   if (history != null) {
+	      List<PriceData> result = new ArrayList<PriceData>();
+	      for (Float price : history) {
+	         result.add(new PriceData(price, date));
+	         date++;  // add one year for next data point
+	      }
+	      return result;
+	   } else {
+	      return null;
+	   }
 	}
 
 	public Stock getStockBySymbol(String symbol) {

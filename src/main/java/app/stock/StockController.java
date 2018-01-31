@@ -27,7 +27,7 @@ public class StockController {
       // TODO: validate JS session!
       //LoginController.ensureUserIsLoggedIn(request, response);
       if (clientAcceptsJson(request)) {
-         HashMap<String, List<Float>> data = new HashMap<String, List<Float>>();
+         HashMap<String, List<PriceData>> data = new HashMap<String, List<PriceData>>();
          Iterable<Stock> stocks = stockDao.getAllStocks();
          for (Stock stock : stocks) {
             String symbol = stock.getSymbol();
