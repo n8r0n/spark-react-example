@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 //import Input from "../presentational/Input";
 import {ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import $ from 'jquery';
 
 class GraphContainer extends Component {
    constructor(props) {
@@ -29,22 +30,35 @@ class GraphContainer extends Component {
    }
 
    render() {
-      return (
-         <ScatterChart width={600} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
-            <XAxis type="number" dataKey={'date'} name='year' unit='' tickCount={7} domain={['dataMin', 'dataMax']} />
-            <YAxis type="number" dataKey={'price'} name='price' unit='USD'/>
-            <ZAxis range={[100]}/>
-            <CartesianGrid />
-            <Tooltip cursor={{strokeDasharray: '3 3'}}/>
-            <Legend/>
-            <Scatter name='TSLA' data={this.state.data["TSLA"]} fill='#8884d8' line shape="square"/>
-            <Scatter name='MSFT' data={this.state.data["MSFT"]} fill='#82ca9d' line shape="diamond"/>
-            <Scatter name='AMZN' data={this.state.data["AMZN"]} fill='#ff0000' line shape="circle"/>
-            <Scatter name='GOOG' data={this.state.data["GOOG"]} fill='#00ff00' line shape="star"/>
-            <Scatter name='UBER' data={this.state.data["UBER"]} fill='#0000ff' line shape="triangle"/>
-            <Scatter name='AAPL' data={this.state.data["AAPL"]} fill='#000000' line shape="cross"/>
-         </ScatterChart>    
-      );
+      // first, make a javascript list of all the Recharts <Scatter> elements by looping over our saved stock data
+      var scatters = [];
+      
+      if (this.state.data) {
+         var colors = [ '#FF0000', '#00FF00', '#0000FF', '#000000' ];  // red, green, blue, black
+         var colorIndex = 0;
+         // loop over all elements in this.state.data, add <Scatter> for each
+         $.each(this.state.data, function (key, value) {
+            var symbol = key;
+            var stockData = value;
+            var color = colors[colorIndex % colors.length]; // rotate colors
+            scatters.push(<Scatter name={symbol} data={stockData} fill={color} line shape="square" />);
+            colorIndex++;
+         });
+         
+         return (          
+            <ScatterChart width={600} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
+               <XAxis type="number" dataKey={'date'} name='year' unit='' tickCount={7} domain={['dataMin', 'dataMax']} />
+               <YAxis type="number" dataKey={'price'} name='price' unit='USD'/>
+               <ZAxis range={[100]}/>
+               <CartesianGrid />
+               <Tooltip cursor={{strokeDasharray: '3 3'}}/>
+               <Legend/>
+               {scatters}
+            </ScatterChart>    
+         );
+      } else {
+         return false;
+      }
    }
 }
 
