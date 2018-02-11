@@ -46,8 +46,15 @@
 
 <!-- this allows React javascript build for the project to be included on all pages -->
 <!-- https://stackoverflow.com/questions/7413234/how-to-prevent-caching-of-my-javascript-file -->
-<script type="text/javascript" src="/js/main.js?ver=38"></script>
+<script type="text/javascript" src="/js/main.js?ver=build_43"></script>
 
 </body>
 </html>
 #end
+
+
+
+
+
+
+
