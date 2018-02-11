@@ -17,7 +17,7 @@ Before building the project, make sure your development machine has the followin
 * [lombok.jar](https://projectlombok.org/download)
 * [npm package manager](https://www.npmjs.com/package/npm)
 * [node.js 64 bit windows installer](https://nodejs.org/en/download/) (includes npm)
-* In Eclipse, open the project, right-click on the project in the Package Explorer, select **Properties**, then **Builders**, select the **Prebuild** builder, **Edit**, and under **Location**, click the **Variables...* button.
+* In Eclipse, open the project, right-click on the project in the Package Explorer, select **Properties**, then **Builders**, select the **Prebuild** builder, **Edit**, and under **Location**, click the **Variables...** button.
   * **Edit Variables...** to add a new variable named `platform_script_extension`, with the value `bat` for Windows, or `sh` for Mac and Linux
   * **Apply and Close**
 * make sure `java` and `javac` are in your PATH, and can be executed at the command line
