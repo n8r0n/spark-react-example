@@ -17,6 +17,10 @@ Before building the project, make sure your development machine has the followin
 * [lombok.jar](https://projectlombok.org/download)
 * [npm package manager](https://www.npmjs.com/package/npm)
 * [node.js 64 bit windows installer](https://nodejs.org/en/download/) (includes npm)
+* In Eclipse, open the project, right-click on the project in the Package Explorer, select **Properties**, then **Builders**, select the **Prebuild** builder, **Edit**, and under **Location**, click the **Variables...* button.
+  * **Edit Variables...** to add a new variable named `platform_script_extension`, with the value `bat` for Windows, or `sh` for Mac and Linux
+  * **Apply and Close**
+* make sure `java` and `javac` are in your PATH, and can be executed at the command line
 
 ### Suggested
 
@@ -32,17 +36,6 @@ After installing the required tools and cloning this project, you will need to m
     
 The `setup.ps1` powershell script will use `npm` to initialize a new package and then fetch other packages that this project will depend on. (use setup.sh script on Mac/Linux instead of setup.ps1)
 
-# Build
-
-After making changes to any of the `webpack/src/` contents (such as .js files), rebuild the webpack package at the command line with:
-
-    npm run build
-    
-And then copy the results into the static resource folder (`\public`) of your webapp project:
-
-    cp .\dist\js\main.js ..\src\main\resources\public\js\
-    
-(You may need to create the `public\js` folder the first time.) Then, build normally in Eclipse and run.  Eclipse will take the large generated main.js file and put it in the directory the webapp uses for static resources. It will then be available to the project.
 
 ## Screenshot
 [![Application Screenshot](https://i.imgur.com/hFEpQMS.png)](https://i.imgur.com/hFEpQMS.png)
